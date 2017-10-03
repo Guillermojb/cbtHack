@@ -1,0 +1,50 @@
+{
+  "name": "service-playlist",
+  "version": "2.0.0",
+  "description": "Service for playlist functionality with MongoDB",
+  "main": "app.js",
+  "contributors": [
+    {
+      "name": "Guillermo Bonilla",
+      "email": "gbonilla@cbtnuggets.com",
+      "slack": "gbonilla"
+    },
+    {
+      "name": "Xavier Montoya",
+      "email": "xmontoya@cbtnuggets.com",
+      "slack": "Xavier Montoya"
+    }
+  ],
+  "scripts": {
+    "start": "node app.js",
+    "test": "export NODE_PATH=$(pwd)/node_modules && find test -name '*_test.js' | xargs istanbul cover _mocha"
+  },
+  "dependencies": {
+    "lib-auth-service-client-nodejs": "^3.3.0",
+    "lib-database-connector-mongodb-nodejs": "1.1.2",
+    "lib-express-app-core-nodejs": "^1.3.3",
+    "lodash": "^4.17.4",
+    "mongoose": "4.5.5",
+    "passport": "0.3.*",
+    "passport-http-bearer": "0.2.*",
+    "q": "1.4.*"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "eslint": "^3.18.0",
+    "eslint-config-cbtnuggets": "^5.0.0",
+    "grunt-nodemon": "^0.4.2",
+    "istanbul": "~0.4.5",
+    "mocha": "^2.1.0",
+    "mockgoose": "6.0.2",
+    "supertest": "1.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cbtnuggets/cbtHack"
+  },
+  "bugs": {
+    "url": "https://github.com/cbtnuggets/cbtHack/issues"
+  },
+  "homepage": "https://github.com/cbtnuggets/cbtHack"
+}

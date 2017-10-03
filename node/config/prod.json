@@ -1,0 +1,25 @@
+{
+    "cbtnAuth": {
+        "host": "https://accounts.cbtnuggets.com",
+        "clientId": "$keys.service.prod.client_id",
+        "clientSecret": "$keys.service.prod.client_secret"
+    },
+    "mongodb": {
+        "host": "mongo.database.prod.us-east-1.nuggets.local",
+        "replicaSet": "mongocluster1",
+        "username": "$keys.mongo.prod.username",
+        "password": "$keys.mongo.prod.password"
+    },
+    "rateLimiter": {
+        "redis": {
+            "host": "prod-ratelmt.z10tjz.ng.0001.use1.cache.amazonaws.com",
+            "port": 6379,
+            "connectTimeout": 1000,
+            "connectMaxAttempts": 3,
+            "db": 2
+        }
+    },
+    "internalAccessClients": {
+        "service-something": "a000000000000000000000000000000000000000"
+    }
+}

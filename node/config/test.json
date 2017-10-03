@@ -1,0 +1,39 @@
+{
+    "cbtnAuth": {
+        "host": "localhost:3021",
+        "clientId": "abcde12345abcde12345abcde12345abcde12345",
+        "clientSecret": "abcde12345abcde12345abcde12345abcde12345"
+    },
+    "mongodb": {
+        "dbname": "test-playlist",
+        "port": 27017,
+        "host": "localhost",
+        "replicaSet": "test"
+    },
+    "rateLimiter": {
+        "redis": {
+            "host": "localhost",
+            "port": 6379,
+            "connectTimeout": 1000,
+            "connectMaxAttempts": 3,
+            "db": 2
+        }
+    },
+    "internalAccessClients": {
+        "service-something": "a000000000000000000000000000000000000002"
+    },
+    "testServers": {
+        "service-auth": {
+            "host": "localhost",
+            "port": 3021
+        },
+        "service-video-query": {
+            "host": "localhost",
+            "port": 3022
+        },
+        "service-member": {
+            "host": "localhost",
+            "port": 3023
+        }
+    }
+}

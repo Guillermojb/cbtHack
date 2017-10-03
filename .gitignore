@@ -1,0 +1,48 @@
+# Node.js files
+node_modules
+grunt.restart
+coverage
+Gruntfile.js
+# Never check in keys
+keys.js*
+cbtn_token_credentials.json
+
+# precommit-hook jshint
+.jshintignore
+.jshintrc
+
+# Logs
+npm-debug.log
+Error.log
+
+# OS generated files
+.DS_Store
+
+# Python
+*.pyc
+keys.py
+
+# Webstorm Files
+.idea
+
+build/deploy.config
+
+logs/**
+dev/dump**
+dev/debug**
+data-mining/**
+data-backup/**
+dev/mongo_scripts/*.json
+dev/*.json
+dev/*.txt
+seed/*
+
+*.log
+
+artifact.config
+deployed.json
+
+dump.rdb
+
+#local environment
+*.local.json

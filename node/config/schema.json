@@ -1,0 +1,146 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Node Template Service Configuration",
+    "version": "1.0",
+    "validation": "https://www.npmjs.com/package/json-schema",
+    "type": "object",
+    "properties": {
+        "required": [
+            "api",
+            "statsd",
+            "logging",
+            "rateLimiter",
+            "mongodb"
+        ],
+        "api": {
+            "type": "object",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "prefix": {
+                    "type": "string"
+                },
+                "http": {
+                    "type": "object",
+                    "properties": {
+                        "host": {"$ref": "#/definitions/nonEmptyString"},
+                        "port": {
+                            "type": "number"
+                        }
+                    },
+                    "required": ["host", "port"]
+                }
+            },
+            "required": ["version", "prefix"],
+            "oneOf": [
+                {
+                    "required": ["http"]
+                }
+            ]
+        },
+        "aws": {
+            "type": "object",
+            "properties": {
+                "region": { "type": "string" }
+            },
+            "required": ["region"]
+        },
+        "logging": {
+            "type": "object",
+            "properties": {
+                "logstash": {
+                    "type": "object",
+                    "properties": {
+                        "host": {"$ref": "#/definitions/nonEmptyString"},
+                        "port": {"type": "number"}
+                    },
+                    "required": ["host", "port"]
+                }
+            }
+        },
+        "statsd": {
+            "type": "object",
+            "properties": {
+                "host": {"$ref": "#/definitions/nonEmptyString"},
+                "port": {"type": "number"}
+
+            },
+            "required": ["host", "port"]
+        },
+        "rateLimiter": {
+            "type": "object",
+            "properties": {
+                "namespace": {"type": "string"},
+                "interval": {"type": "number"},
+                "maxInInterval": {"type": "number"},
+                "redis": {
+                    "type": "object",
+                    "properties": {
+                        "host": {"$ref": "#/definitions/nonEmptyString"},
+                        "port": {"type": "number"},
+                        "connectionTimeout": {"type": "number"},
+                        "connectMaxAttempts": {"type": "number"},
+                        "db": {"type": "number"}
+                    },
+                    "required": ["host", "port"]
+                }
+            },
+            "required": ["namespace", "interval", "maxInInterval", "redis"]
+        },
+        "cbtnAuth": {
+            "type": "object",
+            "properties": {
+                "clientId": {"type": "string"},
+                "clientSecret": {"type": "string"}
+            },
+            "required": ["clientId", "clientSecret"]
+        },
+        "mongodb": {
+            "type": "object",
+            "properties": {
+                "connectionType": {"type": {"enum": ["dnsResolve", "hosts", "host"]}},
+                "dbname": {"type": "string"},
+                "port": {"type": "number"},
+                "replicaSet": {"$ref": "#/definitions/nonEmptyString"},
+                "host": {"type": "string"},
+                "hosts": {"type": "list"}
+            },
+            "required": ["connectionType", "dbname", "port", "replicaSet"]
+        },
+        "internalAccessClients": {
+            "type": "object",
+            "properties": {
+                "service-something": {"$ref": "#/definitions/authClientId"}
+            },
+            "additionalProperties": false,
+            "minProperties": 1
+        },
+        "testServers": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "object",
+                "$ref": "#/definitions/hostWithPort"
+            }
+        }
+    },
+    "definitions": {
+        "nonEmptyString": {
+            "type": "string",
+            "minLength": 1
+        },
+        "authClientId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{40,}$"
+        },
+        "hostWithPort": {
+            "type": "object",
+            "properties": {
+                "host": {"$ref": "#/definitions/nonEmptyString"},
+                "port": {"type": "number"}
+            },
+            "required": ["host", "port"]
+        }
+    },
+    "additionalProperties": false
+}

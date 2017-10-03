@@ -1,0 +1,25 @@
+{
+    "cbtnAuth": {
+        "host": "https://qa-accounts.cbtnuggets.com",
+        "clientId": "$keys.service.qa.client_id",
+        "clientSecret": "$keys.service.qa.client_secret"
+    },
+    "mongodb": {
+      "host": "mongo.database.qa.us-east-1.nuggets.local",
+      "replicaSet": "qa-mongocluster1",
+      "username": "$keys.mongo.qa.username",
+      "password": "$keys.mongo.qa.password"
+    },
+    "rateLimiter": {
+        "redis": {
+            "host": "auth-qa.z10tjz.0001.use1.cache.amazonaws.com",
+            "port": 6379,
+            "connectTimeout": 1000,
+            "connectMaxAttempts": 3,
+            "db": 2
+        }
+    },
+    "internalAccessClients": {
+        "service-something": "a000000000000000000000000000000000000001"
+    }
+}
